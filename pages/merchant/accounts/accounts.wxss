@@ -1,0 +1,139 @@
+page { background: #F0ECE6; }
+
+.page { min-height: 100vh; background: #F0ECE6; }
+
+/* ── 页面头部 ── */
+.page-header {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #FFFFFF; padding: 24rpx 32rpx;
+  border-bottom: 1rpx solid #EAE6E0;
+  position: sticky; top: 0; z-index: 10;
+}
+.header-back {
+  font-size: 52rpx; color: #3A332D; line-height: 1;
+  font-weight: 300; width: 60rpx;
+}
+.header-title { font-size: 32rpx; font-weight: 600; color: #3A332D; }
+.header-add {
+  font-size: 26rpx; color: #C87941; font-weight: 600;
+  padding: 8rpx 20rpx; border: 2rpx solid #C87941;
+  border-radius: 24rpx;
+}
+
+.scroll-body { height: calc(100vh - 100rpx); padding: 24rpx; }
+
+/* ── 主账号卡 ── */
+.main-account-card {
+  background: linear-gradient(135deg, #3A332D, #5A4535);
+  border-radius: 20rpx; padding: 28rpx 24rpx;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+.mac-left { display: flex; align-items: center; gap: 20rpx; }
+.mac-avatar {
+  width: 80rpx; height: 80rpx; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36rpx;
+}
+.mac-info { display: flex; flex-direction: column; gap: 6rpx; }
+.mac-name { font-size: 30rpx; font-weight: 600; color: #FFFFFF; display: block; }
+.mac-username { font-size: 24rpx; color: rgba(255,255,255,0.65); display: block; }
+.mac-badge {
+  font-size: 22rpx; color: #C87941; background: rgba(200,121,65,0.15);
+  border: 2rpx solid rgba(200,121,65,0.4); border-radius: 16rpx;
+  padding: 6rpx 20rpx;
+}
+
+/* ── 说明框 ── */
+.tip-box {
+  background: #FFF8F0; border-radius: 16rpx; padding: 20rpx 24rpx;
+  border: 1rpx solid #F5E0C8; margin-bottom: 24rpx;
+}
+.tip-title { font-size: 26rpx; font-weight: 600; color: #8B6940; display: block; margin-bottom: 12rpx; }
+.tip-row { display: flex; gap: 10rpx; margin-bottom: 8rpx; }
+.tip-dot { font-size: 24rpx; color: #C87941; flex-shrink: 0; }
+.tip-text { font-size: 24rpx; color: #8B7961; line-height: 1.6; flex: 1; }
+
+/* ── 子账号列表 ── */
+.section-title {
+  font-size: 26rpx; color: #8B7961; margin-bottom: 16rpx;
+  padding: 0 4rpx;
+}
+
+.account-list { display: flex; flex-direction: column; gap: 16rpx; }
+
+.account-card {
+  background: #FFFFFF; border-radius: 20rpx;
+  padding: 24rpx; box-shadow: 0 2rpx 12rpx rgba(58,51,45,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.account-card.frozen { opacity: 0.65; }
+
+.ac-left { display: flex; align-items: center; gap: 16rpx; flex: 1; min-width: 0; }
+.ac-avatar {
+  width: 72rpx; height: 72rpx; border-radius: 50%;
+  background: #EAE6E0; display: flex; align-items: center;
+  justify-content: center; font-size: 32rpx; flex-shrink: 0;
+}
+.ac-info { flex: 1; min-width: 0; }
+.ac-name { font-size: 28rpx; font-weight: 600; color: #3A332D; display: block; margin-bottom: 4rpx; }
+.ac-username { font-size: 22rpx; color: #8B7961; display: block; margin-bottom: 4rpx; }
+.ac-date { font-size: 20rpx; color: #B0A090; display: block; }
+
+.ac-actions { display: flex; flex-direction: column; gap: 10rpx; flex-shrink: 0; }
+.ac-btn {
+  font-size: 22rpx; padding: 10rpx 18rpx; border-radius: 12rpx;
+  text-align: center; min-width: 80rpx;
+}
+.ac-btn.freeze { background: #FEF3EA; color: #C87941; }
+.ac-btn.unfreeze { background: #EAF4EA; color: #3A9A3A; }
+.ac-btn.reset { background: #EAE6E0; color: #3A332D; }
+.ac-btn.del { background: #F5E8E0; color: #C87941; }
+
+/* ── 空状态 ── */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 100rpx 32rpx;
+}
+.empty-icon { font-size: 80rpx; opacity: 0.3; margin-bottom: 20rpx; }
+.empty-text { font-size: 28rpx; color: #8B7961; }
+
+/* ── 添加弹窗 ── */
+.modal-mask {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44,26,14,0.45); z-index: 100;
+}
+.add-modal {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #F5EFE6; border-radius: 32rpx 32rpx 0 0;
+  padding: 32rpx 32rpx 0; z-index: 101;
+}
+.am-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 28rpx;
+}
+.am-title { font-size: 32rpx; font-weight: 600; color: #2C1A0E; }
+.am-close {
+  width: 56rpx; height: 56rpx; display: flex; align-items: center;
+  justify-content: center; font-size: 28rpx; color: #9C8672;
+}
+.am-field { margin-bottom: 24rpx; }
+.am-label { font-size: 26rpx; color: #8B7961; display: block; margin-bottom: 10rpx; }
+.am-input {
+  background: #FFFFFF; border-radius: 14rpx; padding: 22rpx 24rpx;
+  font-size: 28rpx; color: #3A332D; width: 100%;
+  box-sizing: border-box; border: 1rpx solid #EAE6E0;
+}
+.am-tip {
+  font-size: 22rpx; color: #9C8672; background: #F0ECE6;
+  border-radius: 12rpx; padding: 16rpx 20rpx; margin-bottom: 24rpx;
+  line-height: 1.6;
+}
+.am-submit {
+  width: 100%; background: #3A332D; color: #F5EFE6;
+  border-radius: 48rpx; font-size: 30rpx; font-weight: 500;
+  padding: 28rpx 0; text-align: center; border: none;
+  margin-bottom: env(safe-area-inset-bottom);
+}
+.am-submit::after { border: none; }

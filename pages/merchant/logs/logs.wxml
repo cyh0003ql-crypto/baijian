@@ -1,0 +1,83 @@
+<view class="page">
+  <!-- 顶部栏 -->
+  <view class="page-header">
+    <view class="header-back" bindtap="onBack">‹</view>
+    <text class="header-title">操作日志</text>
+    <view class="header-clear" bindtap="onClearLogs">清空</view>
+  </view>
+
+  <!-- 筛选 Tab -->
+  <scroll-view scroll-x class="filter-tabs" show-scrollbar="{{false}}">
+    <view class="filter-inner">
+      <view
+        class="filter-tab {{activeFilter === item.val ? 'active' : ''}}"
+        wx:for="{{filterOptions}}"
+        wx:key="val"
+        bindtap="onFilterChange"
+        data-val="{{item.val}}"
+      >{{item.label}}</view>
+    </view>
+  </scroll-view>
+
+  <!-- 统计摘要 -->
+  <view class="summary-bar">
+    <text class="summary-count">共 {{logs.length}} 条记录</text>
+    <text class="summary-tip">最多保存 500 条，主账号可见</text>
+  </view>
+
+  <!-- 日志列表 -->
+  <scroll-view scroll-y class="log-scroll">
+    <view wx:if="{{logs.length === 0}}" class="empty-state">
+      <text class="empty-icon">📋</text>
+      <text class="empty-text">暂无操作记录</text>
+      <text class="empty-tip">已售数量、内部数据、库存的修改都会在此记录</text>
+    </view>
+
+    <view class="log-list" wx:else>
+      <view class="log-item" wx:for="{{logs}}" wx:key="id">
+        <!-- 左侧颜色条 -->
+        <view class="log-stripe {{item.actionColor}}"></view>
+
+        <view class="log-body">
+          <!-- 顶部：时间 + 操作类型标签 -->
+          <view class="log-top">
+            <view class="action-badge {{item.actionColor}}">
+              <text class="action-icon">{{item.actionIcon}}</text>
+              <text class="action-label">{{item.actionLabel}}</text>
+            </view>
+            <text class="log-time">{{item.timeStr}}</text>
+          </view>
+
+          <!-- 商品名 -->
+          <text class="log-product">{{item.productName}}</text>
+
+          <!-- 变更详情 -->
+          <view class="log-change-row">
+            <view class="log-change" wx:if="{{!item.isOrder}}">
+              <text class="log-field">{{item.fieldLabel}}</text>
+              <view class="log-values">
+                <text class="log-old">{{item.oldStr}}</text>
+                <text class="log-arrow">→</text>
+                <text class="log-new">{{item.newStr}}</text>
+              </view>
+            </view>
+            <view class="log-change order-change" wx:else>
+              <text class="log-field">📦 订单触发</text>
+              <text class="log-order-detail">售出 {{item.soldQty}} 件 · 已售+内部数据同步+1 · 库存-1</text>
+            </view>
+          </view>
+
+          <!-- 操作人 -->
+          <view class="log-operator">
+            <view class="operator-badge {{item.operatorRole === 'main' ? 'main' : 'sub'}}">
+              {{item.operatorRole === 'main' ? '主账号' : '子账号'}}
+            </view>
+            <text class="operator-name">{{item.operatorName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style="height:60rpx;"></view>
+  </scroll-view>
+</view>

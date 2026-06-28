@@ -1,0 +1,113 @@
+page { background: #F0ECE6; }
+.page { min-height: 100vh; background: #F0ECE6; display: flex; flex-direction: column; }
+
+/* ── 页头 ── */
+.page-header {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #FFFFFF; padding: 24rpx 32rpx;
+  border-bottom: 1rpx solid #EAE6E0;
+  position: sticky; top: 0; z-index: 10;
+}
+.header-back { font-size: 52rpx; color: #3A332D; line-height: 1; font-weight: 300; width: 60rpx; }
+.header-title { font-size: 32rpx; font-weight: 600; color: #3A332D; }
+.header-clear { font-size: 26rpx; color: #C87941; padding: 8rpx 16rpx; }
+
+/* ── 筛选 Tab ── */
+.filter-tabs { background: #FFFFFF; border-bottom: 1rpx solid #EAE6E0; }
+.filter-inner {
+  display: flex; padding: 0 16rpx;
+  white-space: nowrap; gap: 0;
+}
+.filter-tab {
+  display: inline-flex; align-items: center;
+  padding: 22rpx 28rpx; font-size: 26rpx; color: #8B7961;
+  position: relative; flex-shrink: 0;
+}
+.filter-tab.active { color: #3A332D; font-weight: 600; }
+.filter-tab.active::after {
+  content: ''; position: absolute; bottom: 0; left: 16rpx; right: 16rpx;
+  height: 4rpx; background: #C87941; border-radius: 2rpx;
+}
+
+/* ── 统计摘要栏 ── */
+.summary-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18rpx 28rpx; background: #F8F5F0;
+  border-bottom: 1rpx solid #EAE6E0;
+}
+.summary-count { font-size: 24rpx; color: #3A332D; font-weight: 500; }
+.summary-tip { font-size: 22rpx; color: #B0A090; }
+
+/* ── 日志滚动区 ── */
+.log-scroll { flex: 1; height: calc(100vh - 280rpx); }
+.log-list { padding: 20rpx 24rpx; display: flex; flex-direction: column; gap: 16rpx; }
+
+/* ── 单条日志 ── */
+.log-item {
+  background: #FFFFFF; border-radius: 20rpx;
+  overflow: hidden; box-shadow: 0 2rpx 12rpx rgba(58,51,45,0.06);
+  display: flex;
+}
+.log-stripe { width: 8rpx; flex-shrink: 0; }
+.log-stripe.orange { background: #C87941; }
+.log-stripe.dark { background: #3A332D; }
+.log-stripe.teal { background: #3A8A7A; }
+.log-stripe.green { background: #5A9A5A; }
+
+.log-body { flex: 1; padding: 24rpx 24rpx 20rpx; }
+
+/* 顶部 */
+.log-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12rpx; }
+.action-badge {
+  display: inline-flex; align-items: center; gap: 8rpx;
+  border-radius: 12rpx; padding: 6rpx 16rpx;
+}
+.action-badge.orange { background: #FEF3EA; }
+.action-badge.dark { background: #EEEAE5; }
+.action-badge.teal { background: #E5F3F0; }
+.action-badge.green { background: #EAF3EA; }
+.action-icon { font-size: 22rpx; }
+.action-label {
+  font-size: 22rpx; font-weight: 600;
+}
+.action-badge.orange .action-label { color: #C87941; }
+.action-badge.dark .action-label { color: #3A332D; }
+.action-badge.teal .action-label { color: #3A8A7A; }
+.action-badge.green .action-label { color: #5A9A5A; }
+.log-time { font-size: 22rpx; color: #B0A090; }
+
+/* 商品名 */
+.log-product {
+  font-size: 28rpx; font-weight: 600; color: #3A332D;
+  display: block; margin-bottom: 14rpx;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* 变更详情 */
+.log-change-row { margin-bottom: 14rpx; }
+.log-change { display: flex; align-items: center; gap: 12rpx; flex-wrap: wrap; }
+.log-field { font-size: 22rpx; color: #8B7961; flex-shrink: 0; }
+.log-values { display: flex; align-items: center; gap: 10rpx; }
+.log-old { font-size: 24rpx; color: #B0A090; text-decoration: line-through; }
+.log-arrow { font-size: 22rpx; color: #C0B8AE; }
+.log-new { font-size: 26rpx; font-weight: 700; color: #3A332D; }
+.order-change { flex-direction: column; align-items: flex-start; gap: 6rpx; }
+.log-order-detail { font-size: 24rpx; color: #5A9A5A; }
+
+/* 操作人 */
+.log-operator { display: flex; align-items: center; gap: 12rpx; }
+.operator-badge {
+  font-size: 20rpx; padding: 4rpx 14rpx; border-radius: 10rpx; font-weight: 600;
+}
+.operator-badge.main { background: rgba(200,121,65,0.12); color: #C87941; }
+.operator-badge.sub { background: #EAE6E0; color: #8B7961; }
+.operator-name { font-size: 22rpx; color: #9C8672; }
+
+/* ── 空状态 ── */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 120rpx 40rpx; gap: 16rpx;
+}
+.empty-icon { font-size: 80rpx; opacity: 0.3; }
+.empty-text { font-size: 30rpx; color: #8B7961; }
+.empty-tip { font-size: 24rpx; color: #B0A090; text-align: center; line-height: 1.6; }
