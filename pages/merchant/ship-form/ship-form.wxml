@@ -1,35 +1,16 @@
-<scroll-view scroll-y class="page">
-  <view class="page-title">填写物流信息</view>
+<scroll-view scroll-y="page">
+  <view class="page-title">{{isShipped ? '补充物流信息' : '填写物流信息'}}</view>
   <view class="page-sub">订单号：{{orderId}}</view>
-
   <view class="form-section">
     <text class="section-label">快递公司（选填）</text>
-    <view class="form-group">
-      <input
-        class="f-input"
-        placeholder="如：顺丰、京东快递、中通"
-        bindinput="onCarrierInput"
-        confirm-type="next"
-      />
-    </view>
+    <view class="form-group"><input class="f-input" placeholder="如：顺丰、京东快递、中通" bindinput="onCarrierInput" confirm-type="next" /></view>
   </view>
-
   <view class="form-section">
-    <text class="section-label">物流单号 *</text>
-    <view class="form-group">
-      <input
-        class="f-input"
-        placeholder="请输入快递单号"
-        bindinput="onNumberInput"
-        confirm-type="done"
-      />
-    </view>
+    <text class="section-label">物流单号（选填）</text>
+    <view class="form-group"><input class="f-input" placeholder="可暂不填写，稍后补充" bindinput="onNumberInput" confirm-type="done" /></view>
   </view>
-
-  <view class="tips-block">
-    <text class="tip-text">📦 填写单号后买家可在订单页查看物流状态</text>
-  </view>
-
-  <button class="save-btn" bindtap="onSave">确认发货</button>
+  <view class="tips-block"><text class="tip-text">📦 可以先一键发货，物流单号后续在订单中补充</text></view>
+  <button wx:if="{{!isShipped}}" class="quick-ship-btn" bindtap="onQuickShip">一键发货，稍后补单号</button>
+  <button class="save-btn" bindtap="onSave">{{isShipped ? '保存物流信息' : '填写物流并发货'}}</button>
   <view style="height:60rpx;"></view>
 </scroll-view>
