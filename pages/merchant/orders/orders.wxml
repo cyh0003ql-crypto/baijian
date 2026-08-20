@@ -90,12 +90,14 @@
         <!-- 物流信息（已发货） -->
         <view class="tracking-row" wx:if="{{item.tracking && item.status !== 'paid'}}">
           <text class="tracking-label">物流信息</text>
-          <text class="tracking-val">{{item.tracking.carrier}} {{item.tracking.number}}</text>
+          <text class="tracking-val">{{item.tracking.number ? item.tracking.carrier + ' ' + item.tracking.number : '物流单号待补充'}}</text>
         </view>
 
         <!-- 操作 -->
         <view class="order-actions">
-          <view class="act-btn ship-btn" wx:if="{{item.status === 'paid'}}" bindtap="onShip" data-id="{{item.id}}">确认发货</view>
+          <view class="act-btn ship-btn" wx:if="{{item.status === 'paid'}}" bindtap="onQuickShip" data-id="{{item.id}}">一键发货</view>
+          <view class="act-btn ship-btn" wx:if="{{item.status === 'paid'}}" bindtap="onShip" data-id="{{item.id}}">填写物流发货</view>
+          <view class="act-btn ship-btn" wx:if="{{item.status === 'shipped' && item.tracking && !item.tracking.number}}" bindtap="onShip" data-id="{{item.id}}">补充单号</view>
           <view class="act-btn complete-btn" wx:if="{{item.status === 'shipped'}}" bindtap="onComplete" data-id="{{item.id}}">完成订单</view>
           <view class="act-btn cancel-btn" wx:if="{{item.status === 'paid'}}" bindtap="onCancel" data-id="{{item.id}}">取消</view>
         </view>
