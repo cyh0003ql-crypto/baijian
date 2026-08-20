@@ -1,0 +1,82 @@
+<view class="page">
+  <view class="page-header">
+    <view class="header-back" bindtap="onBack">‹</view>
+    <text class="header-title">子账号管理</text>
+    <view class="header-add" bindtap="onAddAccount">+ 添加</view>
+  </view>
+
+  <scroll-view scroll-y class="scroll-body">
+
+    <!-- 主账号信息 -->
+    <view class="main-account-card">
+      <view class="mac-left">
+        <view class="mac-avatar">👑</view>
+        <view class="mac-info">
+          <text class="mac-name">Petit Aura 主账号</text>
+          <text class="mac-username">admin</text>
+        </view>
+      </view>
+      <view class="mac-badge">主账号</view>
+    </view>
+
+    <!-- 说明 -->
+    <view class="tip-box">
+      <text class="tip-title">权限说明</text>
+      <view class="tip-row"><text class="tip-dot">•</text><text class="tip-text">主账号：查看/修改商品已售数量及内部数据，管理子账号</text></view>
+      <view class="tip-row"><text class="tip-dot">•</text><text class="tip-text">子账号：只能查看/修改已售数量，内部数据不可见</text></view>
+    </view>
+
+    <!-- 子账号列表 -->
+    <view class="section-title">子账号列表（{{accounts.length}} 个）</view>
+
+    <view wx:if="{{accounts.length === 0}}" class="empty-state">
+      <text class="empty-icon">👤</text>
+      <text class="empty-text">暂无子账号，点击右上角添加</text>
+    </view>
+
+    <view class="account-list" wx:else>
+      <view class="account-card {{item.isFrozen ? 'frozen' : ''}}" wx:for="{{accounts}}" wx:key="id">
+        <view class="ac-left">
+          <view class="ac-avatar">{{item.isFrozen ? '🔒' : '👤'}}</view>
+          <view class="ac-info">
+            <text class="ac-name">{{item.name}}</text>
+            <text class="ac-username">账号：{{item.username}}</text>
+            <text class="ac-date">创建于 {{item.createdAt}}</text>
+          </view>
+        </view>
+        <view class="ac-actions">
+          <view class="ac-btn {{item.isFrozen ? 'unfreeze' : 'freeze'}}" catchtap="onToggleFreeze" data-id="{{item.id}}" data-frozen="{{item.isFrozen}}">
+            {{item.isFrozen ? '解冻' : '冻结'}}
+          </view>
+          <view class="ac-btn reset" catchtap="onResetPassword" data-id="{{item.id}}" data-name="{{item.name}}">重置密码</view>
+          <view class="ac-btn del" catchtap="onDelete" data-id="{{item.id}}" data-name="{{item.name}}">删除</view>
+        </view>
+      </view>
+    </view>
+
+    <view style="height:60rpx;"></view>
+  </scroll-view>
+
+  <!-- 添加子账号弹窗 -->
+  <view class="modal-mask" wx:if="{{showAddModal}}" bindtap="onCloseModal"></view>
+  <view class="add-modal" wx:if="{{showAddModal}}">
+    <view class="am-header">
+      <text class="am-title">添加子账号</text>
+      <view class="am-close" bindtap="onCloseModal">✕</view>
+    </view>
+    <view class="am-field">
+      <text class="am-label">账号名称</text>
+      <input class="am-input" placeholder="用于显示（如：合作商家A）" value="{{form.name}}" bindinput="onFormName" />
+    </view>
+    <view class="am-field">
+      <text class="am-label">登录账号</text>
+      <input class="am-input" placeholder="登录时使用的账号" value="{{form.username}}" bindinput="onFormUsername" />
+    </view>
+    <view class="am-field">
+      <text class="am-label">登录密码</text>
+      <input class="am-input" password placeholder="至少6位" value="{{form.password}}" bindinput="onFormPassword" />
+    </view>
+    <view class="am-tip">子账号登录后只能查看和修改已售数量，内部数据不可见</view>
+    <button class="am-submit" bindtap="onSubmitAdd">确认添加</button>
+  </view>
+</view>
