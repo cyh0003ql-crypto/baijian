@@ -19,3 +19,11 @@
   width: calc(100% - 56rpx);
 }
 .save-btn::after { border: none; }
+
+
+.quick-ship-btn {
+  margin: 24rpx 0 16rpx;
+  background: #fff7ef;
+  color: #C87941;
+  border: 1rpx solid #C87941;
+}
